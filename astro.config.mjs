@@ -23,4 +23,5 @@ export default defineConfig({
 			],
 		}),
 	],
+	site: 'https://AnoTherK-ATK.github.io',
 });
