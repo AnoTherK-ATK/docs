@@ -1,10 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-
+import remarkMath from 'remark-math';
+import rehypeMathJax from 'rehype-mathjax';
+import mermaid from 'astro-mermaid';
 
 // https://astro.build/config
 export default defineConfig({
+	markdown: {
+		remarkPlugins: [remarkMath],
+		rehypePlugins: [rehypeMathJax],
+	},
 	integrations: [
 		starlight({
 			title: "AnoTherK's shitpost",
@@ -18,57 +24,26 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-			head: [
-				{
-					tag: 'script',
-					attrs: {
-						id: 'mathjax-script-config',
-						type: 'text/javascript',
-					},
-					// Defines how MathJax finds and processes math in your content
-					content: `
-						window.MathJax = {
-						tex: {
-							inlineMath: [['$', '$']],
-							displayMath: [['$$', '$$']],
-							packages: {'[+]': ['ams']}
-						},
-						svg: {
-							fontCache: 'global'
-						}
-						};
-					`,
+					label: 'Nhập môn lập trình',
+					autogenerate: { directory: 'nmlt' },
 				},
 				{
-					tag: 'script',
-					attrs: {
-						id: 'mathjax-script',
-						type: 'text/javascript',
-						src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js',
-						async: true,
-					},
-				},
-				{
-					tag: 'script',
-					attrs: {
-						type: 'module',
-					},
-					// Initializes MermaidJS and sets a theme that works well with Starlight
-					content: `
-						import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-						mermaid.initialize({
-						startOnLoad: true,
-						theme: 'dark', // Or 'default', 'neutral', 'forest'
-						});
-					`,
-				},
+					label: 'Cấu trúc dữ liệu và Giải thuật',
+					autogenerate: { directory: 'dsa' },
+				}
 			],
 			customCss: ['./src/mathjax.css'],
 		}),
+		mermaid({
+			theme: 'dark',
+			autoTheme: true,
+			mermaidConfig: {
+				flowchart: {
+					curve: 'basis',
+					padding: 15
+				},
+			}
+		})
 	],
 	site: 'https://AnoTherK-ATK.github.io',
 	base: '/docs'
