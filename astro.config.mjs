@@ -18,10 +18,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'About',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Tôi là ai', slug: 'about/me' },
-					],
+					autogenerate: { directory: 'about' },
 				},
 				{
 					label: 'Nhập môn lập trình',
