@@ -4,9 +4,33 @@ description: A, B, C,
 sidebar:
     order: 4
 ---
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+
 Tới được đây thì ok rồi, đến lúc chúng ta học những dòng code đầu tiên.
 
 ## Cấu trúc của code
 Code sẽ gồm 2 phần:
 - Phần khai báo: Là những gì chúng ta nói cho máy tính biết rằng là tôi sẽ sử dụng những cái thư viện, biến, hàm, ... trong chương trình của tôi. Nó là phần tôi thấy nhiều người hay bỏ qua không nói vì nó dễ hiểu nhưng mà có nhiều bạn sẽ quên từ đó gây lỗi.
 - Phần thân chương trình: Đây là nơi mà bạn sẽ bắt đầu viết những logic, những quy trình cho các thư viện, biến, hàm mà bạn đã khai báo hoạt động và có được kết quả mong muốn. Đây là khúc mà bạn hay gọi là "Viết code".
+
+## Hello World!
+Đây là cái câu chắc các bạn nghe nhiều nhất khi bắt đầu học lập trình. Nó là một cách để hiểu cú pháp cơ bản nhất của ngôn ngữ lập trình mới - Output hay còn gọi là xuất.
+
+Khi nói tới output thì nó có khá nhiều nơi để output: file, màn hình, dữ liệu nào đó. Tất nhiên mới học thì bạn nên biết cách xuất ra màn hình trước vì nó dễ nhất.
+
+Vậy thì bắt đầu code thôi.
+
+import HWCpp from './assets/first/code/HW.cpp?raw';
+import HWPy from './assets/first/code/HW.py?raw';
+
+<Tabs>
+    <TabItem label="C++" icon='seti:cpp'>
+        <Code code={HWCpp} lang="c++" title="HW.cpp" ins={[{ range: "1-3", label: "Phần khai báo" }, {range: "5-9", label: "Phần thân chương trình"}]} />
+        
+        Bạn có thể thấy đoạn code này chia rõ được phần thân khai báo bao gồm nói cho máy tính biết chúng ta sử dụng thư viện `iostream` có sẵn trong C++ và scope std để bạn đỡ phải gõ `std::cout` khi dùng thư viện chuẩn của C++.
+    </TabItem>
+
+    <TabItem label="Python" icon='seti:python'>
+        <Code code={HWPy} lang="python" title="HW.py" />
+    </TabItem>
+</Tabs>

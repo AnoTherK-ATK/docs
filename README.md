@@ -1,49 +1,66 @@
-# Starlight Starter Kit: Basics
+<!-- Banner chào mừng -->
+<h1 align="center">Hi 👋, I'm Vũ Ngọc Quốc Khánh</h1>
+<h3 align="center">Information Security Student | Web Developer | CTF Enthusiast</h3>
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+<!-- Liên kết mạng xã hội -->
+<p align="center">
+  <a href="https://www.facebook.com/anotherk.da" target="_blank">
+    <img src="https://img.shields.io/badge/Facebook-1877F2?style=flat&logo=facebook&logoColor=white" alt="Facebook"/>
+  </a>
+  <a href="mailto:your.email@example.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+</p>
 
-```
-pnpm create astro@latest -- --template starlight
-```
+<!-- Giới thiệu bản thân -->
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🎓 I'm currently studying Information Security at UIT - Vietnam National University.
 
-## 🚀 Project Structure
+💻 Passionate about Web Development and Cybersecurity.
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+🛡️ Actively participating in CTF competitions and security challenges.
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+🌱 Continuously learning and exploring new technologies.
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+<!-- Kỹ năng -->
+---
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+### 🛠️ Languages and Tools:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript"/>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git"/>
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux"/>
+</p>
 
-## 🧞 Commands
+<!-- Thống kê GitHub -->
+---
 
-All commands are run from the root of the project, from a terminal:
+### 📊 GitHub Stats:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=AnoTherK-ATK&show_icons=true&theme=radical" alt="GitHub Stats"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=AnoTherK-ATK&theme=radical" alt="GitHub Streak"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AnoTherK-ATK&layout=compact&theme=radical" alt="Top Languages"/>
+</p>
 
-## 👀 Want to learn more?
+---
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+### 📂 My Projects:
+
+- [**Le Hong Phong Online Judge**](https://github.com/AnoTherK-ATK/LHPOJ)
+- [**Netflop**](https://github.com/AnoTherK-ATK/Netflop)
+- [**AES & DES**](https://github.com/AnoTherK-ATK/AES-DES-cryptopp)
+- [**Library Management**](https://github.com/AnoTherK-ATK/LibraryManagement)
+
+<!-- Cảm ơn -->
+---
+
+### 🙏 Thank you for visiting my profile!
+
+Feel free to check out my repositories and connect with me!
