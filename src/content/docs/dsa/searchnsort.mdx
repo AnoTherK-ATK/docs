@@ -1,0 +1,190 @@
+---
+title: Tìm kiếm và Sắp xếp
+sidebar:
+    order: 1
+tableOfContents:
+    minHeadingLevel: 1
+    maxHeadingLevel: 2
+---
+
+import { Code } from '@astrojs/starlight/components';
+
+## Tìm kiếm tuyến tính (Linear Search)
+### Ý tưởng
+Tìm kiếm một phần tử $A_i$ trong mảng $A$ hoặc một giá trị $x$ nào đó để thoả mãn điều kiện cần tìm bằng cách thử từng trường hợp $x$ trong đoạn liên tiếp $[a,b]$.
+
+### Độ phức tạp
+- Trường hợp tốt nhất: $O(1)$
+- Trường hợp trung bình: $O(N)$
+- Trường hợp tệ nhất: $O(N)$
+
+### Cài đặt
+
+import LinearSearchCode from './assets/searchnsort/code/linearSearch.cpp?raw';
+
+**Tìm kiếm phần tử trong mảng**
+
+<Code code={LinearSearchCode} lang="c++" title="linearSearch.cpp" />
+
+**Tìm kiếm giá trị thoả mãn điều kiện**
+Kiểm tra $n$ có phải số nguyên tố hay không
+
+import IsPrimeCode from './assets/searchnsort/code/isPrime.cpp?raw';
+
+<Code code={IsPrimeCode} lang="c++" title="isPrime.cpp" />
+
+## Tìm kiếm tuyến tính (cải tiến) ¯\\_(ツ)_/¯
+Ờm... thì nó không hề cải tiến một chút nào cả nên là cũng không biết ghi như thế nào.
+
+## Tìm kiếm nhị phân
+### Ý tưởng
+Tìm kiếm phần tử $A_i$ trong mảng $A$ có **thứ tự tuyến tính** hoặc tìm giá trị $x$ lớn nhất/nhỏ nhất nào đó trong đoạn $[a, b]$ liên tiếp sao cho các giá trị nhỏ hơn/lớn hơn $x$ cũng thoả điều kiện.
+
+Cách tìm kiếm là chọn phần tử/giá trị trung vị, kiểm tra điều kiện với phần tử/giá trị đó. Nếu thoả điều kiện, ta sẽ giới hạn phạm vi tìm kiếm lại với một đầu là phần tử/giá trị trung vị đó và đầu còn lại. Nếu không thoả, ta sẽ giới hạn phạm vi tìm kiếm trong phần còn lại, tiếp tục tới khi phạm vị tìm kiếm chỉ còn 1 phần tử/giá trị thoả.
+
+### Demo
+
+![demo tìm kiếm nhị phân](https://i.imgur.com/pMyFIeq.gif)
+
+### Độ phức tạp
+- Trường hợp tốt nhất: $O(1)$
+- Trường hợp trung bình: $O(\log{N})$
+- Trường hợp tệ nhất: $O(\log{N})$
+
+### Cài đặt
+**Tìm kiếm phần tử trong mảng**
+
+import BinarySearchArrayCode from './assets/searchnsort/code/binarySearchArray.cpp?raw';
+
+<Code code={BinarySearchArrayCode} lang="c++" title="binarySearchArray.cpp" />
+**Tìm kiếm giá trị thoả mãn điều kiện**
+
+import BinarySearchValueCode from './assets/searchnsort/code/binarySearchValue.cpp?raw';
+
+<Code code={BinarySearchValueCode} lang="c++" title="binarySearchValue.cpp" />
+
+## Sắp xếp chọn (Selection sort)
+### Ý tưởng
+Duyệt qua mảng, tìm phần tử nhỏ nhất chưa được sắp xếp và đưa lên vị trí đầu tiên chưa được sắp xếp.
+
+### Demo
+[VisualAlgo](https://visualgo.net/en/sorting)
+
+### Độ phức tạp và đánh giá
+- Trường hợp tốt nhất: $O(N^2)$
+- Trường hợp trung bình: $O(N^2)$
+- Trường hợp tệ nhất: $O(N^2)$
+- Không ổn định (có thể 2 phần tử không sắp xếp theo vị trí ban đầu nếu như 2 phần tử bằng nhau)
+- In-place sort (Không tạo thêm mảng phụ)
+
+### Cài đặt
+import SelectionSortCode from './assets/searchnsort/code/selectionSort.cpp?raw';
+
+<Code code={SelectionSortCode} lang="c++" title="selectionSort.cpp" />
+
+## Sắp xếp chèn (Insertion sort)
+### Ý tưởng
+Với mỗi phần tử $A_i$, ta sẽ chèn nó vào đúng vị trí đã sắp xếp bằng cách dời chỗ những phần tử khác.
+
+### Demo
+[VisualAlgo](https://visualgo.net/en/sorting)
+
+### Độ phức tạp và đánh giá
+- Trường hợp tốt nhất: $O(N)$
+- Trường hợp trung bình: $O(N^2)$
+- Trường hợp tệ nhất: $O(N^2)$
+- Ổn định
+- In-place sort
+
+### Cài đặt
+import InsertionSortCode from './assets/searchnsort/code/insertionSort.cpp?raw';
+
+<Code code={InsertionSortCode} lang="c++" title="insertionSort.cpp" />
+
+## Sắp xếp vun đống (Heap sort)
+### Ý tưởng
+Ta sẽ xây dựng mảng cần sắp xếp thành cấu trúc [Heap](https://vnoi.info/wiki/translate/wcipeg/Binary-Heap.md#0-ki%E1%BA%BFn-th%E1%BB%A9c-c%E1%BA%A7n-bi%E1%BA%BFt-tr%C6%B0%E1%BB%9Bc).
+
+Heap là một cấu trúc dữ liệu dạng cây nhị phân đầy đủ sao cho mỗi node trên cây đều lớn hơn hoặc bằng hai node con và nhỏ hơn hoặc bằng node cha.
+
+Node gốc có giá trị lớn nhất.
+
+Có 2 loại heap:
+- Max heap (như trên).
+- Min heap (ngược lại, cha nhỏ con).
+
+Giả sử: Ta sử dụng một mảng $B$ để lưu Max heap:
+- $B_0$ là node cha, có giá trị lớn nhất.
+- $B_{2 \times i + 1}$ và $B_{2 \times i + 2}$ là 2 node con của $B_i$ và nhỏ hơn hoặc bằng $B_i$.
+- Hoán đổi vị trí $B_0$ và phần tử cuối mảng, số phần tử của heap giảm đi 1.
+- Xây dựng lại heap từ $B_0$ đến cuối mảng sau khi đã giảm phần tử.
+- Lặp lại bước 3 cho đến khi heap còn 1 hoặc 0 phần tử.
+
+Ta có cấu trúc [Priority queue](https://en.wikipedia.org/wiki/Priority_queue) trong C++ sử dụng một biến thể heap.
+
+### Độ phức tạp và đánh giá
+- Trường hợp tốt nhất: $O(N\log{N})$
+- Trường hợp trung bình: $O(N\log{N})$
+- Trường hợp tệ nhất: $O(N\log{N})$
+- Không ổn định
+- In-place sort (Nếu không dùng priority queue)
+
+### Cài đặt
+**Không dùng priority_queue**
+
+import HeapifyCode from './assets/searchnsort/code/heapify.cpp?raw';
+
+<Code code={HeapifyCode} lang="c++" title="heapify.cpp" />
+
+import HeapSortCode from './assets/searchnsort/code/heapSort.cpp?raw';
+
+<Code code={HeapSortCode} lang="c++" title="heapSort.cpp" />
+
+**Dùng priority_queue**
+
+import HeapSortPriorityQueueCode from './assets/searchnsort/code/heapSortPriorityQueue.cpp?raw';
+
+<Code code={HeapSortPriorityQueueCode} lang="c++" title="heapSortPriorityQueue.cpp" />
+
+## Sắp xếp nhanh (Quick sort)
+### Ý tưởng
+- Chọn một phần tử làm `pivot`
+- Chia mảng thành 2 phần: Phần nhỏ hơn `pivot` nằm bên trái `pivot` và phần lớn hơn `pivot` nằm bên phải `pivot`
+- Duyệt qua mảng, tìm phần tử nàm bên trái nhưng lớn hơn `pivot` thì chuyển qua bên phải `pivot` và ngược lại.
+- Tiếp tục đệ quy để sắp xếp 2 phần nhỏ hơn.
+
+### Độ phức tạp và đánh giá
+- Trường hợp tốt nhất: $O(N\log{N})$
+- Trường hợp trung bình: $O(N\log{N})$
+- Trường hợp tệ nhất: $O(N^2)$
+- Không ổn định
+- In-place sort
+
+### Cài đặt
+import QuickSortCode from './assets/searchnsort/code/quickSort.cpp?raw';
+
+<Code code={QuickSortCode} lang="c++" title="quickSort.cpp" />
+
+## Sắp xếp trộn
+### Ý tưởng
+Sắp xếp trộn hoạt động kiểu đệ quy:
+
+- Đầu tiên chia dữ liệu thành 2 phần, và sắp xếp từng phần.
+- Sau đó gộp 2 phần lại với nhau. Để gộp 2 phần, ta làm như sau:
+- Tạo một dãy $A$ mới để chứa các phần tử đã sắp xếp.
+- So sánh 2 phần tử đầu tiên của 2 phần. Phần tử nhỏ hơn ta cho vào $A$ và xóa khỏi phần tương ứng.
+- Tiếp tục như vậy đến khi ta cho hết các phần tử vào dãy $A$.
+
+### Độ phức tạp và đánh giá
+- Trường hợp tốt nhất: $O(N\log{N})$
+- Trường hợp trung bình: $O(N\log{N})$
+- Trường hợp tệ nhất: $O(N\log{N})$
+- Ổn định
+- Non In-place sort (tạo thêm mảng phụ)
+
+### Cài đặt
+Nguồn: [VNOI](https://vnoi.info/wiki/algo/basic/sorting.md)
+
+import MergeSortCode from './assets/searchnsort/code/mergeSort.cpp?raw';
+
+<Code code={MergeSortCode} lang="c++" title="mergeSort.cpp" />

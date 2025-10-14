@@ -4,7 +4,7 @@ description: A, B, C,
 sidebar:
     order: 4
 ---
-import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Code, Tabs, TabItem, Card } from '@astrojs/starlight/components';
 
 Tới được đây thì ok rồi, đến lúc chúng ta học những dòng code đầu tiên.
 
@@ -20,17 +20,49 @@ Khi nói tới output thì nó có khá nhiều nơi để output: file, màn h�
 
 Vậy thì bắt đầu code thôi.
 
-import HWCpp from './assets/first/code/HW.cpp?raw';
-import HWPy from './assets/first/code/HW.py?raw';
+import HWCpp from './assets/first/code/HelloWorld.cpp?raw';
+import HWPy from './assets/first/code/HelloWorld.py?raw';
 
 <Tabs>
     <TabItem label="C++" icon='seti:cpp'>
-        <Code code={HWCpp} lang="c++" title="HW.cpp" ins={[{ range: "1-3", label: "Phần khai báo" }, {range: "5-9", label: "Phần thân chương trình"}]} />
+        <Code code={HWCpp} lang="c++" title="HelloWorld.cpp" ins={[{ range: "1-3", label: "Phần khai báo" }, {range: "5-9", label: "Phần thân chương trình"}]} />
         
-        Bạn có thể thấy đoạn code này chia rõ được phần thân khai báo bao gồm nói cho máy tính biết chúng ta sử dụng thư viện `iostream` có sẵn trong C++ và scope std để bạn đỡ phải gõ `std::cout` khi dùng thư viện chuẩn của C++.
+        Bạn có thể thấy đoạn code này chia rõ được phần thân khai báo bao gồm nói cho máy tính biết chúng ta sử dụng thư viện `iostream` có sẵn trong C++ và scope std để bạn đỡ phải gõ `std::cout` khi dùng thư viện chuẩn của C++, dùng khi đi học chứ ra ngoài thì mọi người vẫn khuyến khích bạn viết cả scope ra để phân biệt hàm nào trong thư viện nào.
     </TabItem>
 
     <TabItem label="Python" icon='seti:python'>
-        <Code code={HWPy} lang="python" title="HW.py" />
+        <Code code={HWPy} lang="python" title="HelloWorld.py" />
+        Ngắn gọn nhưng lại không rõ được có cần khai báo gì hay không. Khi bạn sử dụng những thứ làm nên thương hiệu của Python (train máy học, AI các kiểu) thì lúc đó bạn cần khai báo thư viện.
     </TabItem>
 </Tabs>
+
+## Chạy code
+### C++
+C++ thì có vẻ sẽ hơi rắc rối một chút, nhưng tôi sẽ hướng dẫn ở Code::Blocks và ở VSCode.
+
+- Đối với Code::Blocks thì bạn chỉ cần nhấn nút F9 thôi.
+- Đối với VSCode sau khi bạn đã setup thành công theo [hướng dẫn của VSCode](https://code.visualstudio.com/docs/languages/cpp) thì bạn bấm tổ hợp `Ctrl + Shift + B` để build file. Sau đó chạy lệnh sau trong terminal
+```shell
+./HelloWorld.{đuôi file nếu có}
+```
+Tôi nghĩ rằng nó sẽ ra những gì mình mong muốn là bạn thấy màn hình có chữ `Hello World!`.
+
+### Python
+Dễ rồi, một lệnh cho mọi thứ:
+
+```shell
+python3 HelloWorld.py
+```
+Vậy là bạn biết cách để viết và chạy những dòng code đầu tiên rồi đó.
+
+## Giải thích
+Những gì mà chúng ta vừa cùng nhau viết là cách đơn giản nhất để bạn có thể có được Output, hay còn gọi là kết quả mà chúng ta mong muốn chương trình đưa cho con người. Ủa mà khoan, ở bài trước tôi nói là với mỗi Input thì sẽ có Output khác nhau, mà tôi thấy là cho dù bạn chạy bao nhiêu lần thì nó cũng ra y chang nhau.
+
+Từ đây, bạn sẽ được học cách để có thể đưa thêm Input, một đầu vào hay tham số để có thể tính toán gì đó và làm nhiều trò đúng với những gì mà chương trình được sinh ra.
+
+## Luyện tập
+Đây là lúc chúng ta áp dụng những gì mình học vào thứ để làm bài tập (hay còn gọi là đấm bài). Ở bài đầu tiên thì tôi cũng không mong chờ bạn làm gì nhiều, hãy tự viết và thử xem mình có sai gì hay không.
+
+- In ra một bài thơ bất kỳ.
+- In ra một câu nói nào đó.
+- [Hình đẹp](https://lhpoj.io.vn/problem/ts11_poster) - đến lúc quảng cáo cho LHPOJ và bài này thì tôi muốn bạn tìm làm hacker xíu.
