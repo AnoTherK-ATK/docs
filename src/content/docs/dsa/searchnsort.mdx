@@ -13,10 +13,11 @@ import { Code } from '@astrojs/starlight/components';
 ### Ý tưởng
 Tìm kiếm một phần tử $A_i$ trong mảng $A$ hoặc một giá trị $x$ nào đó để thoả mãn điều kiện cần tìm bằng cách thử từng trường hợp $x$ trong đoạn liên tiếp $[a,b]$.
 
+
 ### Độ phức tạp
-- Trường hợp tốt nhất: $O(1)$
-- Trường hợp trung bình: $O(N)$
-- Trường hợp tệ nhất: $O(N)$
+- Trường hợp tốt nhất: $O(1)$ khi mà phần tử cần tìm ngay đầu mảng.
+- Trường hợp trung bình: $O(N)$ 
+- Trường hợp tệ nhất: $O(N)$ khi mà nó nằm ở cuối
 
 ### Cài đặt
 
@@ -47,9 +48,11 @@ Cách tìm kiếm là chọn phần tử/giá trị trung vị, kiểm tra đi�
 ![demo tìm kiếm nhị phân](https://i.imgur.com/pMyFIeq.gif)
 
 ### Độ phức tạp
-- Trường hợp tốt nhất: $O(1)$
-- Trường hợp trung bình: $O(\log{N})$
-- Trường hợp tệ nhất: $O(\log{N})$
+- Trường hợp tốt nhất: $O(1)$ khi mà lần đầu là có luôn
+- Trường hợp trung bình: $O(\log{N})$ 
+- Trường hợp tệ nhất: $O(\log{N})$ khi chạy hết mới biết
+
+**Lưu ý** $\log$ ở đây là logarit cơ số 2
 
 ### Cài đặt
 **Tìm kiếm phần tử trong mảng**
@@ -71,7 +74,7 @@ Duyệt qua mảng, tìm phần tử nhỏ nhất chưa được sắp xếp và
 [VisualAlgo](https://visualgo.net/en/sorting)
 
 ### Độ phức tạp và đánh giá
-- Trường hợp tốt nhất: $O(N^2)$
+- Trường hợp tốt nhất: $O(N^2)$ 
 - Trường hợp trung bình: $O(N^2)$
 - Trường hợp tệ nhất: $O(N^2)$
 - Không ổn định (có thể 2 phần tử không sắp xếp theo vị trí ban đầu nếu như 2 phần tử bằng nhau)
