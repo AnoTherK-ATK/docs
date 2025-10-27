@@ -1,0 +1,102 @@
+---
+title: Quiz Example
+description: Example of how to use the Quiz component
+sidebar:
+    order: 99
+---
+
+import Quiz from '../../../components/Quiz.astro';
+import {Code,Card} from "@astrojs/starlight/components";
+import CppCode from './about.cpp?raw';
+
+## Quiz Example
+
+This page demonstrates the Quiz component with examples of both multiple choice and multiple answer questions.
+
+### Basic Quiz Example
+
+<Quiz 
+  title="Kiểm tra kiến thức cơ bản" 
+  questions={[
+    {
+      id: 'q1',
+      type: 'single',
+      question:() => (
+        <Card title="Ví dụ">
+    <p>Nội dung trong Card…</p>
+  </Card>
+      ),
+      options: [
+        { id: 'a', text: '3' },
+        { id: 'b', text: '4' },
+        { id: 'c', text: '5' },
+        { id: 'd', text: '6' }
+      ],
+      correctAnswers: ['b'],
+      explanation: 'Phép cộng 2 + 2 cho kết quả là 4.'
+    },
+    {
+      id: 'q2',
+      type: 'multiple',
+      question: 'Những ngôn ngữ lập trình nào sau đây là đúng? (Chọn nhiều)',
+      options: [
+        { id: 'a', text: 'JavaScript' },
+        { id: 'b', text: 'HTML' },
+        { id: 'c', text: 'Python' },
+        { id: 'd', text: 'CSS' }
+      ],
+      correctAnswers: ['a', 'c'],
+      explanation: 'JavaScript và Python là ngôn ngữ lập trình. HTML và CSS là ngôn ngữ đánh dấu và định dạng.'
+    },
+    {
+      id: 'q3',
+      type: 'single',
+      question: 'Biến là gì?',
+      options: [
+        { id: 'a', text: 'Một giá trị không thay đổi' },
+        { id: 'b', text: 'Một nơi lưu trữ dữ liệu có thể thay đổi' },
+        { id: 'c', text: 'Một kiểu dữ liệu' },
+        { id: 'd', text: 'Một câu lệnh' }
+      ],
+      correctAnswers: ['b'],
+      explanation: 'Biến là một nơi lưu trữ dữ liệu mà giá trị có thể thay đổi trong quá trình thực thi chương trình.'
+    }
+  ]} 
+/>
+
+## How to Use
+
+To use the Quiz component in your MDX files:
+
+```astro
+import Quiz from '../../components/Quiz.astro';
+
+<Quiz 
+  title="Your Quiz Title"
+  questions={[
+    {
+      id: 'q1',
+      type: 'single', // or 'multiple'
+      question: 'Your question here',
+      options: [
+        { id: 'a', text: 'Option 1' },
+        { id: 'b', text: 'Option 2' },
+        { id: 'c', text: 'Option 3' },
+        { id: 'd', text: 'Option 4' }
+      ],
+      correctAnswers: ['b'],
+      explanation: 'Optional explanation'
+    }
+  ]}
+/>
+```
+
+## Features
+
+- ✅ **Multiple Choice**: Single answer questions with radio buttons
+- ✅ **Multiple Answer**: Questions with multiple correct answers (checkboxes)
+- ✅ **Auto-scoring**: Automatic score calculation when submitted
+- ✅ **Visual Feedback**: Color-coded correct/incorrect answers
+- ✅ **Explanations**: Optional explanations for each question
+- ✅ **Mobile Friendly**: Responsive design for all devices
+
