@@ -7,7 +7,9 @@ tableOfContents:
     maxHeadingLevel: 2
 ---
 
-import { Code } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';   
+
+
 
 ## Tìm kiếm tuyến tính (Linear Search)
 ### Ý tưởng
@@ -23,9 +25,14 @@ Tìm kiếm một phần tử $A_i$ trong mảng $A$ hoặc một giá trị $x$
 
 import LinearSearchCode from './assets/searchnsort/code/linearSearch.cpp?raw';
 
+import VideoPlayer from '../../../components/VideoPlayer.astro';
+
 **Tìm kiếm phần tử trong mảng**
 
+<VideoPlayer src="/DSA/videos/LinearSearch.mp4" />
+
 <Code code={LinearSearchCode} lang="c++" title="linearSearch.cpp" />
+
 
 **Tìm kiếm giá trị thoả mãn điều kiện**
 Kiểm tra $n$ có phải số nguyên tố hay không

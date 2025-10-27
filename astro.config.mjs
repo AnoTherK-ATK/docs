@@ -40,7 +40,7 @@ export default defineConfig({
 					padding: 15
 				},
 			}
-		})
+		}),
 	],
 	site: 'https://AnoTherK-ATK.github.io',
 	base: '/docs'

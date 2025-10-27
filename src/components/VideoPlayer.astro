@@ -1,0 +1,45 @@
+---
+// src/components/VideoPlayer.astro
+
+// Nhập các kiểu CSS của Plyr để trình phát có giao diện đẹp mắt.
+import 'plyr/dist/plyr.css';
+
+// Định nghĩa các thuộc tính (props) mà component này có thể nhận.
+// 'src' là đường dẫn đến video của bạn, đây là thuộc tính bắt buộc.
+// 'poster' là ảnh hiển thị trước khi video chạy, đây là tùy chọn.
+export interface Props {
+  src: string;
+  poster?: string;
+}
+
+const { src, poster } = Astro.props;
+---
+
+<video
+  class="plyr-video-player"
+  playsinline
+  controls
+  src={src}
+  poster={poster}
+>
+  </video>
+
+<script>
+  // Đoạn mã này sẽ chạy trên trình duyệt của người dùng.
+  import Plyr from 'plyr';
+
+  // Tìm tất cả các trình phát video có class 'plyr-video-player' trên trang
+  // và khởi tạo Plyr cho từng cái.
+  // Cách này đảm bảo tất cả các video trên cùng một trang đều hoạt động.
+  const players = Array.from(document.querySelectorAll('.plyr-video-player')).map(p => new Plyr(p));
+</script>
+
+<style>
+  /* Tùy chỉnh thêm CSS cho trình phát video của bạn ở đây nếu muốn.
+    Ví dụ: thêm một chút bo tròn các góc.
+  */
+  :global(.plyr--video) {
+    border-radius: 8px;
+    overflow: hidden; /* Đảm bảo video cũng được bo tròn */
+  }
+</style>
