@@ -15,6 +15,8 @@ import { Code } from '@astrojs/starlight/components';
 ### Ý tưởng
 Tìm kiếm một phần tử $A_i$ trong mảng $A$ hoặc một giá trị $x$ nào đó để thoả mãn điều kiện cần tìm bằng cách thử từng trường hợp $x$ trong đoạn liên tiếp $[a,b]$.
 
+### Demo
+<VideoPlayer src="/docs/DSA/videos/LinearSearch.mp4" />
 
 ### Độ phức tạp
 - Trường hợp tốt nhất: $O(1)$ khi mà phần tử cần tìm ngay đầu mảng.
@@ -28,10 +30,9 @@ import LinearSearchCode from './assets/searchnsort/code/linearSearch.cpp?raw';
 import VideoPlayer from '../../../components/VideoPlayer.astro';
 
 **Tìm kiếm phần tử trong mảng**
-
-<VideoPlayer src="/DSA/videos/LinearSearch.mp4" />
-
 <Code code={LinearSearchCode} lang="c++" title="linearSearch.cpp" />
+
+
 
 
 **Tìm kiếm giá trị thoả mãn điều kiện**
@@ -41,12 +42,16 @@ import IsPrimeCode from './assets/searchnsort/code/isPrime.cpp?raw';
 
 <Code code={IsPrimeCode} lang="c++" title="isPrime.cpp" />
 
+Để luyện chút tư duy thì bạn thử cải tiến để nó chạy nhanh hơn xem.
+
 ## Tìm kiếm tuyến tính (cải tiến) ¯\\_(ツ)_/¯
 Ờm... thì nó không hề cải tiến một chút nào cả nên là cũng không biết ghi như thế nào.
 
 ## Tìm kiếm nhị phân
 ### Ý tưởng
-Tìm kiếm phần tử $A_i$ trong mảng $A$ có **thứ tự tuyến tính** hoặc tìm giá trị $x$ lớn nhất/nhỏ nhất nào đó trong đoạn $[a, b]$ liên tiếp sao cho các giá trị nhỏ hơn/lớn hơn $x$ cũng thoả điều kiện.
+Tìm kiếm phần tử $A_i$ trong mảng $A$ có **thứ tự tuyến tính** (có nghĩa là nó tăng dần hoặc giảm dần) hoặc tìm giá trị $x$ lớn nhất/nhỏ nhất nào đó trong đoạn $[a, b]$ liên tiếp sao cho các giá trị nhỏ hơn/lớn hơn $x$ cũng thoả điều kiện.
+
+Về phần thứ tự tuyến tính. Bạn thử tưởng tượng là kết quả bạn cần tìm là lớn nhất có thể, thì các giá trị nhỏ hơn đều đúng điều kiện. Giống như việc đồ thị $y = x$ có 2 nửa ở trên trục hoành và ở dưới trục hoành chẳng hạn.
 
 Cách tìm kiếm là chọn phần tử/giá trị trung vị, kiểm tra điều kiện với phần tử/giá trị đó. Nếu thoả điều kiện, ta sẽ giới hạn phạm vi tìm kiếm lại với một đầu là phần tử/giá trị trung vị đó và đầu còn lại. Nếu không thoả, ta sẽ giới hạn phạm vi tìm kiếm trong phần còn lại, tiếp tục tới khi phạm vị tìm kiếm chỉ còn 1 phần tử/giá trị thoả.
 
