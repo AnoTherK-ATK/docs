@@ -1,0 +1,343 @@
+/* CSS không thay đổi */
+:root {
+    --qz-bg: var(--sl-color-bg, #ffffff);
+    --qz-text: var(--sl-color-text, #111827);
+    --qz-muted: var(--sl-color-text-muted, #6b7280);
+    --qz-hairline: var(--sl-color-hairline, #e5e7eb);
+    --qz-accent: var(--sl-color-accent, #4f46e5);
+    --qz-accent-low: var(--sl-color-accent-low, #eef2ff);
+    --qz-green: var(--sl-color-green, #10b981);
+    --qz-red: var(--sl-color-red, #ef4444);
+    --qz-radius: 10px;
+    --qz-tint: color-mix(in oklab, var(--qz-text) 6%, transparent);
+    --qz-tint-strong: color-mix(in oklab, var(--qz-text) 12%, transparent);
+    --qz-correct-bg: color-mix(in oklab, var(--qz-green) 14%, transparent);
+    --qz-correct-ring: color-mix(in oklab,
+            var(--qz-green) 32%,
+            transparent);
+    --qz-wrong-bg: color-mix(in oklab, var(--qz-red) 12%, transparent);
+    --qz-wrong-ring: color-mix(in oklab, var(--qz-red) 28%, transparent);
+    --qz-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+        0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="dark"] {
+    --qz-tint: color-mix(in oklab, var(--qz-text) 8%, transparent);
+    --qz-tint-strong: color-mix(in oklab, var(--qz-text) 16%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .quiz-container * {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.quiz-container {
+    background: var(--qz-bg);
+    color: var(--qz-text);
+    border: 1px solid var(--qz-hairline);
+    border-radius: var(--qz-radius);
+    padding: 1rem;
+    box-shadow: var(--qz-shadow);
+}
+
+.quiz-title {
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+}
+
+.quiz-content {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.question-wrapper {
+    padding: 1rem;
+    border: 1px solid var(--qz-hairline);
+    border-radius: calc(var(--qz-radius) - 2px);
+    background: color-mix(in oklab, var(--qz-bg) 92%, transparent);
+}
+
+.question-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.question-number {
+    font-weight: 600;
+}
+
+.question-badge {
+    font-size: 0.875rem;
+    color: var(--qz-muted);
+    background: var(--qz-tint);
+    border: 1px solid var(--qz-tint-strong);
+    border-radius: 6px;
+    padding: 0.1rem 0.4rem;
+}
+
+.question-text {
+    margin-bottom: 0.75rem;
+}
+
+.options-list {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.options-list .option {
+    position: relative;
+    border: 1px solid var(--qz-hairline);
+    border-radius: 8px;
+    background: var(--qz-tint);
+    padding: 0.75rem 0.875rem;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.1s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.options-list .option:hover {
+    border-color: color-mix(in oklab,
+            var(--qz-accent) 28%,
+            var(--qz-hairline));
+    background: color-mix(in oklab,
+            var(--qz-accent-low) 60%,
+            var(--qz-tint));
+}
+
+.option input[type="radio"],
+.option input[type="checkbox"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.option-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.option-check {
+    width: 1.05rem;
+    height: 1.05rem;
+    border: 2px solid var(--qz-hairline);
+    border-radius: 4px;
+    display: inline-block;
+    flex-shrink: 0;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.option input[type="radio"]~.option-label .option-check {
+    border-radius: 50%;
+}
+
+.option input:checked~.option-label .option-check {
+    border-color: var(--qz-accent);
+    background: color-mix(in oklab, var(--qz-accent) 20%, transparent);
+    box-shadow: 0 0 0 6px var(--qz-accent-low) inset;
+}
+
+.option:focus-visible,
+.option input:focus-visible~.option-label .option-check {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-accent) 55%, transparent);
+    border-radius: 6px;
+}
+
+.option-title {
+    font-weight: 600;
+}
+
+.option-body {
+    margin-top: 0.5rem;
+}
+
+.option-body :where(pre, code, .card, blockquote) {
+    max-width: 100%;
+}
+
+.options-list .option.correct-answer {
+    border-color: var(--qz-green);
+    box-shadow: 0 0 0 2px var(--qz-correct-ring) inset;
+    background: color-mix(in oklab,
+            var(--qz-correct-bg) 60%,
+            var(--qz-tint));
+}
+
+.options-list .option.correct-answer .option-title::before {
+    content: "✓";
+    margin-right: 0.5rem;
+    color: var(--qz-green);
+    font-weight: 700;
+}
+
+.options-list .option.incorrect-answer {
+    border-color: var(--qz-red);
+    box-shadow: 0 0 0 2px var(--qz-wrong-ring) inset;
+    background: color-mix(in oklab, var(--qz-wrong-bg) 60%, var(--qz-tint));
+}
+
+.options-list .option.incorrect-answer .option-title::before {
+    content: "✕";
+    margin-right: 0.5rem;
+    color: var(--qz-red);
+    font-weight: 700;
+}
+
+.question-wrapper.correct {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-green) 22%, transparent) inset;
+}
+
+.question-wrapper.incorrect {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-red) 18%, transparent) inset;
+}
+
+.explanation {
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--qz-accent);
+    background: color-mix(in oklab,
+            var(--qz-accent-low) 80%,
+            var(--qz-tint));
+    border-radius: 6px;
+}
+
+.explanation strong {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+}
+
+.quiz-footer {
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.submit-btn {
+    appearance: none;
+    border: 1px solid var(--qz-accent);
+    background: var(--qz-accent);
+    color: white;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 0.06s ease,
+        filter 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.05);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.submit-btn:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--qz-accent) 55%, transparent);
+}
+
+.result-container {
+    flex: 1 1 320px;
+    border: 1px solid var(--qz-hairline);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    background: var(--qz-tint);
+}
+
+.result-header {
+    margin-bottom: 0.5rem;
+}
+
+.result-title {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.result-content {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.score-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 1.05rem;
+}
+
+.score-label {
+    color: var(--qz-muted);
+}
+
+.score-value {
+    font-weight: 700;
+}
+
+.score-percentage {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--qz-hairline);
+    background: var(--qz-accent-low);
+}
+
+.score-percentage.excellent {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-green) 28%, transparent) inset;
+}
+
+.score-percentage.good {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-green) 18%, transparent) inset;
+}
+
+.score-percentage.average {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-accent) 18%, transparent) inset;
+}
+
+.score-percentage.poor {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--qz-red) 28%, transparent) inset;
+}
+
+.result-message {
+    color: var(--qz-muted);
+}
+
+.quiz-container input[disabled]~.option-label {
+    cursor: default;
+    opacity: 0.9;
+}
+
+.quiz-container input[disabled]~.option-body {
+    opacity: 0.98;
+}
+
+@media (max-width: 640px) {
+    .quiz-container {
+        padding: 0.875rem;
+    }
+
+    .question-wrapper {
+        padding: 0.875rem;
+    }
+}
