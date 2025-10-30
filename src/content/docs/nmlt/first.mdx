@@ -5,6 +5,7 @@ sidebar:
     order: 4
 ---
 import { Code, Tabs, TabItem, Card } from '@astrojs/starlight/components';
+import Quiz from "../../../components/Quiz.astro"
 
 Tới được đây thì ok rồi, đến lúc chúng ta học những dòng code đầu tiên.
 
@@ -22,17 +23,27 @@ Vậy thì bắt đầu code thôi.
 
 import HWCpp from './assets/first/code/HelloWorld.cpp?raw';
 import HWPy from './assets/first/code/HelloWorld.py?raw';
+import HWPyMain from './assets/first/code/HelloWorldMain.py?raw';
+import q3 from './assets/first/code/q3.cpp?raw';
 
 <Tabs>
     <TabItem label="C++" icon='seti:cpp'>
         <Code code={HWCpp} lang="c++" title="HelloWorld.cpp" ins={[{ range: "1-3", label: "Phần khai báo" }, {range: "5-9", label: "Phần thân chương trình"}]} />
-        
         Bạn có thể thấy đoạn code này chia rõ được phần thân khai báo bao gồm nói cho máy tính biết chúng ta sử dụng thư viện `iostream` có sẵn trong C++ và scope std để bạn đỡ phải gõ `std::cout` khi dùng thư viện chuẩn của C++, dùng khi đi học chứ ra ngoài thì mọi người vẫn khuyến khích bạn viết cả scope ra để phân biệt hàm nào trong thư viện nào.
+
+        Một điều bạn có thể thấy nữa là trong phần thân chương trình của C++, các đoạn lệnh bạn viết đề sẽ được nằm trong một cái gọi là hàm `main()`. Hàm main này sẽ là thứ được máy tính mở ra đọc và chạy nên là khi bạn muốn viết gì thì đều phải viết trong hàm main này. Các bài viết tiếp theo thì tôi sẽ nói về việc bạn có thể viết ngoài hàm main.
+
+        Và vì là "hàm" main nên là ta cũng cần phải cho nó có một kết quả nên có thêm dòng `return 0;` ở gần cuối để đưa kết quả 0 - chương trình chạy ổn định.
     </TabItem>
 
     <TabItem label="Python" icon='seti:python'>
         <Code code={HWPy} lang="python" title="HelloWorld.py" />
         Ngắn gọn nhưng lại không rõ được có cần khai báo gì hay không. Khi bạn sử dụng những thứ làm nên thương hiệu của Python (train máy học, AI các kiểu) thì lúc đó bạn cần khai báo thư viện.
+
+        Phần thân chương trình cũng không rõ ràng như C++. Nhưng mà trong Python thì vẫn có hàm main giống với C++. Tôi khuyến khích bạn là hãy tập cách viết luôn hàm main vào để phân tách code dễ đọc hơn và dễ vận hành hơn.
+        <Code code={HWPyMain} lang="python" title='HelloWorldMain.py' />
+
+        Rất đẹp và dễ sử dụng
     </TabItem>
 </Tabs>
 
@@ -41,10 +52,16 @@ import HWPy from './assets/first/code/HelloWorld.py?raw';
 C++ thì có vẻ sẽ hơi rắc rối một chút, nhưng tôi sẽ hướng dẫn ở Code::Blocks và ở VSCode.
 
 - Đối với Code::Blocks thì bạn chỉ cần nhấn nút F9 thôi.
-- Đối với VSCode sau khi bạn đã setup thành công theo [hướng dẫn của VSCode](https://code.visualstudio.com/docs/languages/cpp) thì bạn bấm tổ hợp `Ctrl + Shift + B` để build file. Sau đó chạy lệnh sau trong terminal
-```shell
-./HelloWorld.{đuôi file nếu có}
-```
+- Đối với VSCode sau khi bạn đã setup thành công theo [hướng dẫn của VSCode](https://code.visualstudio.com/docs/languages/cpp) thì bạn bấm tổ hợp `Ctrl + Shift + B` để build file.
+- Còn bạn muốn tryhard với terminal thì có thể dùng lệnh:
+    ```shell
+    g++ HelloWorld.cpp -o HelloWorld.{exe nếu là Windows còn bỏ trống nếu là Linux}
+    ```
+
+- Cho dù bạn sử dụng cách VSCode hay terminal thì đều phải chạy thêm dòng dưới đây:
+    ```shell
+    ./HelloWorld.{exe nếu là Windows còn bỏ trống nếu là Linux}
+    ```
 Tôi nghĩ rằng nó sẽ ra những gì mình mong muốn là bạn thấy màn hình có chữ `Hello World!`.
 
 ### Python
@@ -65,4 +82,69 @@ Từ đây, bạn sẽ được học cách để có thể đưa thêm Input, m
 
 - In ra một bài thơ bất kỳ.
 - In ra một câu nói nào đó.
-- [Hình đẹp](https://lhpoj.io.vn/problem/ts11_poster) - đến lúc quảng cáo cho LHPOJ và bài này thì tôi muốn bạn tìm làm hacker xíu.
+- [Hình đẹp](https://lhpoj.io.vn/problem/ts11_poster) - đến lúc quảng cáo cho LHPOJ và bài này thì tôi muốn bạn tự làm hacker xíu.
+- In ra hình tam giác cân/vuông các thể loại.
+
+## Bài tập
+Ủa có cái này nữa hả.
+
+Có chứ bạn tôi, khi đi thi cũng sẽ hỏi kiểu này nên là chuẩn bị tinh thần là vừa.
+
+<Quiz 
+    title='Trắc nghiệm Output'
+    questions={[
+        {
+            id: "q1",
+            type: "multiple",
+            question: "Cấu trúc của một chương trình thường có những phần nào?",
+            options: [
+                {id: "A", text: "Phần thân chương trình"},
+                {id: "B", text: "Phần mềm"},
+                {id: "C", text: "Phần xuất chương trình"},
+                {id: "D", text: "Phần khai báo"},
+                {id: "E", text: "Phần chính"}
+            ],
+            correctAnswers: ["A", "D"],
+            explanation: "Cấu trúc bìnhh thường của chương trình là phần thân với khai báo, ai mà chọn được phần mềm thì tôi cũng thấy hay."
+        },
+        {
+            id: "q2",
+            type: "single",
+            question: "Câu lệnh nào trong C++ được dùng để xuất kết quả ra màn hình?",
+            options: [
+                {id: "A", text: () => (
+                    <Code code="print()" lang="python" />
+                )},
+                {id: "B", text: () => (
+                    <Code code="cout <<" lang="c++" />
+                )},
+                {id: "C", text: () => (
+                    <Code code="write()" lang="pascal" />
+                )},
+                {id: "D", text: () => (
+                    <Code code="console.log()" lang="javascript" />
+                )}
+            ],
+            correctAnswers: ["B"],
+            explanation: "3 đáp án còn lại lần lượt là của Python, Pascal và JavaScript."
+        },
+        {
+            id: "q3",
+            type: "single",
+            question: () => (
+                <>
+                    <Code code={q3} title='Câu 3' lang='c++' />
+                    Đoạn code trên có vấn đề gì
+                </>
+            ),
+            options: [
+                {id: "A", text: "Đoạn code trên bình thường."},
+                {id: "B", text: "Sai cú pháp namespace."},
+                {id: "C", text: "Thiếu khai báo thư viện."},
+                {id: "D", text: "Cả B và C."}
+            ],
+            correctAnswers: ["D"],
+            explanation: "name space là thấy sai nặng rồi mà còn thiếu thư viện thì gấp đôi nỗi đau."
+        }
+    ]}
+/>

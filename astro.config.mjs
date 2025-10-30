@@ -14,7 +14,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: "AnoTherK's basement",
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AnoTherK-ATK' }, { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/anotherk.da' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AnoTherK-ATK/docs' }, { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/anotherk.da' }],
 			sidebar: [
 				{
 					label: 'About',
