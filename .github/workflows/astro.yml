@@ -30,7 +30,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.12.3   # hoặc version bạn muốn cố định
+          version: 10.16.0   # hoặc version bạn muốn cố định
 
       # Node + cache pnpm theo pnpm-lock.yaml
       - name: Setup Node
