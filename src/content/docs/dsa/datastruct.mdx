@@ -1,0 +1,92 @@
+---
+title: Các cấu trúc dữ liệu cơ bản
+sidebar:
+    order: 2
+tableOfContents:
+    minHeadingLevel: 1
+    maxHeadingLevel: 2
+---
+
+import {Code} from "@astrojs/starlight/components";
+
+![](https://i.redd.it/2npc5wdlyu771.jpg)
+Cái hình này khá là chuẩn đấy.
+## Danh sách liên kết đơn
+### Khái niệm
+- Danh sách liên kết đơn là tập hợp tuyến tính các phần tử và dữ liệu, mà giữa chúng có dự liên kết với nhau thông qua địa chỉ.
+- Cách hoạt động của danh sách liên kết là 1 node trong đó sẽ chứa giá trị và địa chỉ trỏ đến node tiếp theo, node cuối cùng có địa chỉ trỏ đến null.
+
+Các thao tác của danh sách liên kết bao gồm:
+- Khởi tạo
+- Thêm node
+- Xoá node
+- Duyệt danh sách liên kết
+- Truy xuất bằng chỉ mục
+
+### Ví dụ:
+[Visualgo](https://visualgo.net/en/list)
+
+### Cài đặt
+**1 node**
+```c++
+struct Node{
+    int data;
+    Node *next;
+};
+```
+
+**Danh sách liên kết**
+```c++
+struct SinglyLinkedList{
+    Node* head;
+    Node* tail;
+};
+```
+
+import LinkedListcpp from "./assets/datastruct/SinglyLinkedList.cpp?raw";
+
+<Code code={LinkedListcpp} title="SinglyLinkedList.cpp" lang="c++" showLineNumbers="true" ins={[
+    {range: "1-27", label: "Khai báo Node và List"},
+    {range: "29-38", label: "Tìm kiếm"},
+    {range: "40-51", label: "Truy xuất node theo index"},
+    {range: "53-80", label: "Thêm node vào đầu, cuối hoặc là vị trí bất kỳ theo index"},
+    {range: "82-102", label: "Xoá node tại vị trí bất kỳ"}
+]} />
+
+
+## Stack
+### Khái niệm
+Là một cấu trúc dữ liệu hoạt động theo nguyên tắc **Last In, First Out (LIFO)**. Phần tử cuối cùng được thêm vào stack sẽ là phần tử đứng đầu và là phần tử bị xoá đầu tiên.
+
+Các thao tác trên stack là:
+- `push` (thêm phần tử)
+- `pop` (xoá phần tử đầu)
+- `top` (giá trị phần tử đứng đầu)
+- `empty` (kiểm tra stack có rỗng hay không)
+- `size` (chiều dài của stack)
+![image alt](https://hackmd.io/_uploads/rJKgK5e_h.png)
+
+
+### Ví dụ:
+[Visualgo](https://visualgo.net/en/list)
+
+### Cài đặt
+Trong thư viện chuẩn của C++, ta có thể sử dụng `std::stack` để khai báo cấu trúc stack có sẵn các thao tác.
+
+## Queue
+### Khái niệm
+Là một cấu trúc dữ liệu hoạt động theo nguyên tắc **First In, First Out (FIFO)**. Phần tử đầu tiên được thêm vào queue sẽ là phần tử đứng đầu và là phần tử bị xoá đầu tiên.
+
+Các thao tác trên queue là:
+- `push` (thêm phần tử)
+- `pop` (xoá phần tử đầu)
+- `front` (giá trị phần tử đứng đầu)
+- `empty` (kiểm tra queue có rỗng hay không)
+- `size` (chiều dài của queue)
+
+
+### Ví dụ:
+[Visualgo](https://visualgo.net/en/list)
+
+### Cài đặt
+Trong thư viện chuẩn của C++, ta có thể sử dụng `std::queue` để khai báo cấu trúc queue có sẵn các thao tác.
