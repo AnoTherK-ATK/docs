@@ -1,0 +1,150 @@
+---
+title: Biến và kiểu dữ liệu
+description: Công nghệ VAR
+sidebar:
+    order: 5
+tableOfContents:
+    minHeadingLevel: 1
+    maxHeadingLevel: 2
+---
+
+import { Card, Code, TabItem, Tabs } from "@astrojs/starlight/components"
+
+Ủa sao nãy học có mỗi xuất mà không có nhập ta?
+
+Thì bạn phải biết về mấy cái này trước khi mà biết về cú pháp nhập.
+
+## Biến
+Ơ thế là đuổi đi à? 
+
+Không, "biến" ở đây giống với định nghĩa mà bạn đã học ở môn Toán lớp 7.
+
+<Card title="Biến" icon="matrix" > 
+    Là các ký tự (chữ cái, từ, từ thêm số) đại diện cho các dữ liệu sử dụng trong lập trình.
+</Card>
+
+Giống trong môn Toán, các ký tự mà bạn đã quá quen như là $x$, $y$, $z$ đều là biến khi bạn đặt nó trong đa thức.
+
+Vậy trong lập trình thì nó sao ta. Ở trong lập trình thì các biến cũng tương tự như thế: nó có thể là biến `x`, `y`, `z` thậm chí là tên biến có thể dài hơn một ký tự như là `never_gonna_give_you_up` cũng có thể là biến.
+
+Mà muốn xài thì phải khai báo, mà cú pháp khai báo sao ta? Như vầy:
+
+## Khai báo biến
+
+<Tabs>
+    <TabItem label="C++" icon='seti:cpp'>
+        Đối với C++ thì tất nhiên nó có một chút quy tắc:
+
+        <Code code="int x = 0" lang="c++" />
+
+        Ủa rồi `int` là cái gì nữa? Lát rồi biết.
+
+    </TabItem>
+    <TabItem label="Python" icon='seti:python'>
+        Nó còn gọn hơn như thế:
+        <Code code="x = 0" lang="python" />
+        Siêu đẹp nhưng mà nó có một cái bất lợi mà lát nữa bạn cũng sẽ biết.
+    </TabItem>
+</Tabs>
+
+Khi mà bạn ghi những dòng này, ta có thể hiểu là RAM ở trong máy tính của bạn sẽ chừa cho chúng ta một vài cái ô để chúng ta nhét mấy cái dữ liệu của chúng ta vào.
+
+## Kiểu dữ liệu
+Nhưng mà máy tính làm sao để biết chừa bao nhiêu RAM là đủ?
+
+Đây là lúc mà bạn thấy cái chữ `int` ở trong code C++ có tác dụng.
+
+<Card title="Kiểu dữ liệu" icon="sourcehut">
+    Là một cách đơn giản để biết biến đó có thể chứa dữ liệu dạng gì và chiếm bao nhiêu trong RAM.
+</Card>
+
+Ta có thể chia ra làm 4 loại kiểu dữ liệu cơ bản:
+- Số nguyên (hay trong môn Số học mình hay ghi là $\mathbb{Z}$)
+- Số thực ($\mathbb{R}$)
+- Ký tự (Các chữ a, b, c hay là các dấu chấm, dấu phẩy)
+- Boolean (Chỉ có đúng hoặc sai, hay mình ghi là true/false)
+
+### C++
+Với các kiểu dữ liệu này thì C++ còn chia nhỏ ra nữa để bạn có thể tối ưu trong việc viết code sao cho không tốn quá nhiều bộ nhớ.
+
+#### Số nguyên
+Đây là những kiểu dữ liệu về số nguyên bạn sẽ hay dùng:
+|Kiểu dữ liệu|Khoảng cho phép|Bộ nhớ chiếm dụng|Ghi chú|
+|-|-|-|-|
+|`int`|$-2^{31} ... 2^{31} - 1$|4 bytes|$2^{31} = 2147483648$|
+|`short`|$-2^{15} ... 2^{15} - 1$|2 bytes|$2^{15} = 32768$|
+|`unsigned int`|$0 ... 2^{32} - 1$|4 bytes||
+|`long long`|$-2^{63} ... 2^{63} - 1$|8 bytes|nó dài quá nên chắc thôi|
+|`unsigned long long`|0 ... 2^{64} - 1$|8 bytes|
+
+Nó có hai điều mà bạn bắt buộc phải nhớ:
+:::note[Số có dấu vs Số không dấu]
+    Số có dấu là số có cả phần âm. Số không dấu sẽ chỉ bắt đầu từ 0.
+    
+    Bạn có thể thấy các kiểu dữ liệu bắt đầu bằng chữ `unsigned` là số không dấu và giá trị tối đa mà nó có thể dùng sẽ gấp đôi với kiểu có dấu tương đương.
+
+    Vấn đề này nằm ở việc khi mà máy tính sử dụng các ô nhớ (tính theo bit chỉ có thể chứa giá trị 1 hoặc 0) thì kiểu có dấu sẽ chiếm bit lớn nhất (bit đầu tiên bạn thấy) để phân định xem là nó có âm hay không.
+
+    Nếu bit đó = 1, số đó âm và ngược lại.
+
+    Ví dụ: Bạn có thể dùng calculator trong Windows, chọn thành dạng Programmer, chỉnh chữ QWORD thành BYTE cho nó nhỏ
+
+    Và sau đó bạn nhập -1. Kết quả là bạn thấy ở phần BIN (tức dạng nhị phân) sẽ có số 1111 1111, trong khi nếu bạn nhập 127 thì chỉ có 0111 1111.
+
+    Vì bit 1 đầu tiên được dùng làm dấu âm rồi.
+:::
+
+:::tip[Phép tính vượt ngoài khoảng cho phép]
+    Bạn thử đoán xem. Nếu tôi có phép tính $2^{31} - 1$ (tức là tối đa của int) mà cộng thêm 1 thì sao?
+
+    Nó sẽ gây lỗi. Đúng, nhưng mà lỗi gì?
+
+    Nó sẽ không gây rồi lỗi biên dịch, thứ mà bạn sẽ dính nếu thiếu dấu chấm phẩy hay là viết sai cú pháp. Nó vẫn sẽ chạy bình thường, nhưng kết quả thì lạ lắm.
+
+    Nó sẽ ra kết quả là $-2147483648$, tức là nếu như mà có phép tính mà kết quả vượt quá số đó thì nó sẽ xoay vòng về âm và chạy tiếp. Ngược lại kết quả mà nhỏ hơn giới hạn dưới thì nó sẽ trở thành số to nhất rồi lùi tiếp.
+
+    Nên **hãy cẩn thận** khi chọn kiểu dữ liệu và thực hiện phép tính.
+:::
+
+#### Số thực
+Số thực cũng tương tự:
+|Kiểu dữ liệu|Khoảng cho phép|Bộ nhớ chiếm dụng|Ghi chú|
+|-|-|-|-|
+|`float`|$1.2 \times 10^{-38} ... 3.4 \times 10^{38}$|4 bytes|Chứa được 7 chữ số sau dấu thập phân|
+|`double`|$1.7 \times 10^{308} ... 1.7 \times 10^{308}$|2 bytes|Chứa được 15 chữ số sau dấu thập phân|
+
+Nó vẫn chứa được số âm nên thoải mái.
+
+Vậy thì auto dùng số thực cho to chứ mắc gì phải dùng số nguyên chi cho mệt? Nghe thì hay nhưng nó có một vấn đề rất lớn.
+
+:::tip[Phép tính với số thực]
+    Khi bạn ghi
+    ```c++ showLineNumbers=false
+    x = 3.0 + 0.1
+    ```
+    Thì kết quả mà biến x lưu lại sẽ là $3.09999999994$ chứ không hẳn là $3.1$ như ta mong muốn.
+
+    Vì trong số thực trong máy tính (gọi đúng là số chấm động) sẽ luôn được làm tròn và làm đủ trò để cho tối ưu bộ nhớ, dẫn đến làm tròn sai và bạn có thể tính sai.
+
+    Nên khi bạn làm việc với số thực, **hãy để ý thật kỹ**. Hãy dùng khi bắt buộc phải dùng và cho phép sai số.
+
+    Còn bạn muốn chuyên sâu có thể tìm hiểu tại [bài viết này](https://stackoverflow.com/a/21895757).
+:::
+
+#### Ký tự
+Bạn hay dùng chỉ có 1 kiểu là `char`, chiếm 1 bytes
+
+Ký tự ở đây sẽ có giới hạn cho phép là từ $-128 ... 127$ nhưng mà theo tôi biết thì bạn xài đến được $255$ lận.
+
+Ủa mà sao ký tự mà có số? Thì các con số đó là thứ tự của các ký tự trong bảng mã [ASCII](https://www.ascii-code.com/). 
+
+#### Boolean
+Cái này là tối ưu nhất, nó chỉ chiếm **1 bit**, đúng vậy, 1 bit thôi.
+
+Vì nó chỉ chứa giá trị là `true` hoặc `false` nên là chỉ tốn đúng 1 bit hoặc là 0 hoặc là 1 để biểu diễn.
+
+### Python
+Python nó còn gọn ác nữa.
+
+Python
+

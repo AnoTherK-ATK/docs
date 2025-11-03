@@ -3,6 +3,9 @@ title: Hello World!
 description: A, B, C,
 sidebar:
     order: 4
+tableOfContents:
+    minHeadingLevel: 1
+    maxHeadingLevel: 2
 ---
 import { Code, Tabs, TabItem, Card } from '@astrojs/starlight/components';
 import Quiz from "../../../components/Quiz.astro"
@@ -34,16 +37,19 @@ import q3 from './assets/first/code/q3.cpp?raw';
         Một điều bạn có thể thấy nữa là trong phần thân chương trình của C++, các đoạn lệnh bạn viết đề sẽ được nằm trong một cái gọi là hàm `main()`. Hàm main này sẽ là thứ được máy tính mở ra đọc và chạy nên là khi bạn muốn viết gì thì đều phải viết trong hàm main này. Các bài viết tiếp theo thì tôi sẽ nói về việc bạn có thể viết ngoài hàm main.
 
         Và vì là "hàm" main nên là ta cũng cần phải cho nó có một kết quả nên có thêm dòng `return 0;` ở gần cuối để đưa kết quả 0 - chương trình chạy ổn định.
+
+        **Điều quan trọng:** kết thúc câu lệnh thì phải có dấu chấm phẩy `;`, không là compiler nó đỏ lè. 
     </TabItem>
 
     <TabItem label="Python" icon='seti:python'>
         <Code code={HWPy} lang="python" title="HelloWorld.py" />
-        Ngắn gọn nhưng lại không rõ được có cần khai báo gì hay không. Khi bạn sử dụng những thứ làm nên thương hiệu của Python (train máy học, AI các kiểu) thì lúc đó bạn cần khai báo thư viện.
-
+        Ngắn gọn nhưng lại không rõ được có cần khai báo gì hay không. Khi bạn sử dụng những thứ làm nên thương hiệu của Python (train máy học, AI các kiểu) thì lúc đó bạn cần khai báo thư viện. 
         Phần thân chương trình cũng không rõ ràng như C++. Nhưng mà trong Python thì vẫn có hàm main giống với C++. Tôi khuyến khích bạn là hãy tập cách viết luôn hàm main vào để phân tách code dễ đọc hơn và dễ vận hành hơn.
         <Code code={HWPyMain} lang="python" title='HelloWorldMain.py' />
 
-        Rất đẹp và dễ sử dụng
+        Rất đẹp và dễ sử dụng.
+
+        **Điều quan trọng:** bạn có thấy Python không cần phải kết thúc bằng dấu chấm phẩy như C++, nghe tưởng đã đúng không. Không hẳn, Python nó không có chấm phẩy nhưng bù lại thì bạn cần phải `indent` cho đúng, hay còn gọi là bạn phải tab cho đúng.
     </TabItem>
 </Tabs>
 
