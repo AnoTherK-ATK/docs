@@ -8,7 +8,8 @@ tableOfContents:
     maxHeadingLevel: 2
 ---
 
-import { Card, Code, TabItem, Tabs } from "@astrojs/starlight/components"
+import { Card, Code, TabItem, Tabs } from "@astrojs/starlight/components";
+import Quiz from "../../../components/Quiz.astro";
 
 Ủa sao nãy học có mỗi xuất mà không có nhập ta?
 
@@ -146,5 +147,285 @@ Vì nó chỉ chứa giá trị là `true` hoặc `false` nên là chỉ tốn �
 ### Python
 Python nó còn gọn ác nữa.
 
-Python
+Python chỉ có các loại dữ liệu cơ bản hay dùng khá giống như là tôi nói ban đầu. Còn về giới hạn thì gần như là vô hạn.
 
+Nhưng nó có một vấn đề là không có khai báo kiểu dữ liệu, nên khi bạn viết một hồi có khi bạn không biết biến này đang có dữ liệu gì. Dẫn đến code có thể bị lỗi.
+
+## Thao tác với biến 
+Bạn có thể thử các thao tác sau.
+
+### Khai báo biến
+Cái này thì biết rồi. Cú pháp là:
+<Tabs>
+    <TabItem label="C++" icon='seti:cpp'>
+        ```c++ showLineNumbers=false
+        <kiểu dữ liệu> <tên biến> {= <giá trị ban đầu>};
+        ```
+        Bạn có thể không gán giá trị ban đầu.
+    </TabItem>
+    <TabItem label="Python" icon='seti:python'>
+        ```python showLineNumbers=false
+        <tên biến> = <giá trị ban đầu>
+        ```
+        Bạn **bắt buộc** phải gán giá trị ban đầu.
+    </TabItem>
+</Tabs>
+
+Bạn có thể khai báo biến bên ngoài các hàm (nó sẽ thành biến toàn cục) hoặc ở trong một hàm bất kỳ (nó sẽ thành biến cục bộ). Vấn đề về toàn cục và cục bộ thì tôi sẽ nói sau.
+
+#### Một số quy tắc về tên biến
+- Độ dài của tên biến ít nhất là 1 và dài nhất là vô hạn.
+- Tên biến có thể chứa chữ in hoa hoặc in thường, số, dấu gạch dưới (`_`).
+- Tên biến không được trùng với lệnh hoặc cú pháp khác.
+- Tên biến có phân biệt hoa thường.
+- Tên biến không được bắt đầu bằng số.
+
+### Gán biến 
+Đây là thao tác bạn sẽ làm gần như nhiều nhất khi lập trình.
+
+<Tabs>
+    <TabItem label="C++" icon='seti:cpp'>
+        ```c++ showLineNumbers=false
+        <tên biến> = <giá trị>;
+        ```
+    </TabItem>
+    <TabItem label="Python" icon='seti:python'>
+        ```python showLineNumbers=false
+        <tên biến> = <giá trị>
+        ```
+    </TabItem>
+</Tabs>
+
+### Tính toán
+Cái này thì nhiều luôn. Bạn có thể dùng các toán tử như `+, -, *, /,...`.
+
+Ở C++ dấu `%` là chia lấy phần dư còn `/` là chia lấy phần nguyên.
+
+Riêng Python thì khi bạn dùng `/` nó sẽ hiểu là phép chia thập phân. `//` mới là chia lấy phần nguyên.
+
+Còn các phép toán trên bit nữa, mà cái này tôi nghĩ nên viết thành bài riêng.
+
+Sau khi tính toán thì kết quả sẽ là giá trị, không phải biến mới, nên nó không lưu và sẽ gây ra lỗi biên dịch nếu như bạn chỉ để ở đó.
+
+Bạn có thể kết hợp phép gán và tính như sau:
+
+```c++
+x = a + b;
+x = 1 + 2;
+x = x + 1;
+```
+
+Đúng rồi đấy, nó lấy chính nó ra để cộng và gán kết quả lại cho chính nó.
+
+Bạn cũng có thể làm như sau để tiết kiệm thời gian và công sức gõ.
+
+```c++
+x += 1;
+//là x = x + 1; nhưng gọn hơn
+x -= 1;
+x *= 2;
+x /= 2;
+x %= 2;
+```
+
+Trong Python cũng dùng được như thế.
+
+#### Thứ tự tính toán
+Thứ tự tính toán cũng giống với cách ta tính biểu thức.
+- Trong ngoặc, ngoặc càng bên trong càng làm trước.
+- Luỹ thừa.
+- Nhân chia.
+- Cộng trừ.
+
+:::tip[Toán tử đặc biệt trong C++]
+Cái này là tôi ưu ái viết riêng cho C++ ~~vì tôi thích~~.
+
+Ở trong vài ngôn ngữ lập trình như C++ và JavaScript,... Có một loại toán tử là `++` hoặc `--`.
+
+Nó là phép tính ngắn gọn cho việc cộng 1 hoặc trừ 1 vào biến ghi trước hoặc sau nó.
+
+Ví dụ:
+```c++
+x++;
+//hoặc
+++x;
+// nó tương đương với
+x += 1
+```
+
+Vậy chia ra cả trước sau làm gì?
+
+Nó có một cái tính năng là nếu bạn để dạng `x++` và dùng ở trong phép tính, thì máy tính sẽ trả giá trị của x trước, sau đó mới tăng x thêm 1.
+
+Còn nếu là `++x` thì nó sẽ cộng x lên trước rồi mới trả kết quả.
+
+Ví dụ như:
+```c++
+x = 5;
+cout << ++x + x++ << endl;
+```
+
+Thì kết quả sẽ như sau:
+- Gán x = 5 trước.
+- ++x, lúc này x = 6.
+- x++, nó sẽ trả x = 6 trước rồi mới lên 7.
+- Cho nên kết quả là 6 + 6 = 12.
+:::
+
+### Ép Kiểu
+Đây là cái thứ mà tôi cũng không muốn đụng lắm vì đơn giản nó dễ gây rối và lỗi.
+
+Đố các bạn:
+```c++
+double x = 10 / 4;
+```
+
+Biến x sẽ có giá trị bao nhiêu?
+
+Bằng 2.5 hay là 2.49999999 á? Sai.
+
+Đây là thứ làm nên thương hiệu của C++.
+
+Khi phép tính của bạn bắt đầu với kiểu dữ liệu nào, thì nó sẽ tự động hiểu các kiểu dữ liệu sau đó sẽ là cùng loại.
+
+Trong ví dụ trên thì nó hiểu số 10 là số nguyên nên sẽ chia số nguyên thành ra kết quả là 2.
+
+Để ra được kết quả là số thực thì bạn cần phải ép kiểu cho nó.
+
+Có nhiều cách để ép kiểu, nhưng tôi sẽ chỉ bạn cách gọi là dễ hiểu nhất.
+
+```c++
+double x = (double)10 / 4;
+```
+
+Chỉ cần bạn mở một cái ngoặc ở đằng trước và ghi kiểu bạn muốn là xong.
+
+## Hằng số 
+Ở trong lập trình, bạn có thể có được các hằng số.
+
+<Card title="Hằng số" icon="warning">
+    Giống như hằng số trong toán. Nó là những biến có sẵn giá trị khi khai báo và **KHÔNG THỂ THAY ĐỔI GIÁ TRỊ** sau đó.
+</Card>
+
+Cú pháp thì chỉ có ở C++ thôi.
+
+```c++
+const <tên hằng số> = <giá trị ban đầu>;
+```
+
+Lần này bạn bắt buộc phải có giá trị ban đầu. Và khai báo hằng số phải nằm bên ngoài tất cả các hàm.
+
+## Luyện tập
+Tôi nghĩ là bài thì cũng chỉ xoay quanh các gán biến cơ bản thôi. Không có gì nhiều
+
+## Bài tập
+
+<Quiz 
+  title='Trắc nghiệm: Biến, Kiểu dữ liệu & Thao tác với biến'
+  questions={[
+    {
+      id: "v1",
+      type: "multiple",
+      question: "Những tên biến hợp lệ trong C++ là?",
+      options: [
+        { id: "A", text: "_count10" },
+        { id: "B", text: "2value" },
+        { id: "C", text: "total_sum" },
+        { id: "D", text: "float" },
+        { id: "E", text: "studentName" }
+      ],
+      correctAnswers: ["A", "C", "E"],
+      explanation: "Tên biến không được bắt đầu bằng chữ số (loại B), không trùng từ khóa (loại D). Dấu gạch dưới đầu tiên hợp lệ, và có thể dùng chữ thường/hoa/số (sau ký tự đầu)."
+    },
+
+    {
+      id: "v2",
+      type: "single",
+      question: "Kiểu dữ liệu nào phù hợp nhất để đếm số lượng phần tử (không âm) có thể lên tới hàng tỷ?",
+      options: [
+        { id: "A", text: "short" },
+        { id: "B", text: "unsigned int" },
+        { id: "C", text: "float" },
+        { id: "D", text: "char" }
+      ],
+      correctAnswers: ["B"],
+      explanation: "Đếm phần tử thường dùng số nguyên không âm → unsigned. Kích thước thường đủ lớn (trên nhiều hệ thống 32-bit hoặc 64-bit) để chứa đến hàng tỷ."
+    },
+
+    {
+      id: "v3",
+      type: "single",
+      question: () => (
+        <>
+          <Code
+            title="q3"
+            lang="c++"
+            code={`int a = 5;
+int b = 2;
+double c = a / b;
+std::cout << c;`}
+          />
+          Giá trị in ra màn hình là?
+        </>
+      ),
+      options: [
+        { id: "A", text: "2.5" },
+        { id: "B", text: "2" },
+        { id: "C", text: "2.0" },
+        { id: "D", text: "Lỗi biên dịch" }
+      ],
+      correctAnswers: ["C"],
+      explanation: "a/b là chia nguyên (5/2 = 2), sau đó gán vào double nên thành 2.0. Muốn 2.5 thì ép kiểu một toán hạng: (double)a / b."
+    },
+
+    {
+      id: "v4",
+      type: "multiple",
+      question: "Những phát biểu nào sau đây là đúng về từ khóa const?",
+      options: [
+        { id: "A", text: "const biến cấm bị gán lại giá trị" },
+        { id: "B", text: "const giúp trình biên dịch tối ưu và bắt lỗi sớm" },
+        { id: "C", text: "const bắt buộc phải khởi tạo ngay khi khai báo" },
+        { id: "D", text: "const có thể dùng làm kích thước mảng tĩnh nếu là hằng thời gian biên dịch" }
+      ],
+      correctAnswers: ["A", "B", "D"],
+      explanation: "A và B đúng. D đúng khi const là hằng compile-time. C không bắt buộc về mặt cú pháp ở mọi ngữ cảnh (nhưng thường nên khởi tạo)."
+    },
+
+    {
+      id: "v5",
+      type: "single",
+      question: () => (
+        <>
+          <Code
+            title="q5"
+            lang="c++"
+            code={`int x = 3;
+int y = ++x * x++;
+// Sau dòng trên, x và y lần lượt là?`}
+          />
+          Chọn đáp án đúng.
+        </>
+      ),
+      options: [
+        { id: "A", text: "x = 5, y = 12" },
+        { id: "B", text: "x = 4, y = 12" },
+        { id: "C", text: "x = 5, y = 16" },
+        { id: "D", text: "x = 4, y = 16" }
+      ],
+      correctAnswers: ["A"],
+      explanation: "++x tiền tố → x thành 4 rồi dùng 4. x++ hậu tố → dùng 4 rồi x tăng thành 5. y = 4 * 4 = 16? Khoan—thứ tự đánh giá toán hạng trong C++ định nghĩa: toán tử * đánh giá vế trái rồi vế phải. Với ++x (ra 4) và x++ (dùng 4), y = 4*4 = 16 và x cuối là 5. Tuy nhiên nhiều người dễ nhầm; đáp án đúng là x=5, y=16. (Lưu ý: ví dụ này minh họa thứ tự đánh giá; tránh viết code khó đọc.)"
+      // Note: Đáp án đúng là C; cập nhật cho phù hợp bên dưới.
+    },
+  ].map(q => {
+    // Sửa lỗi đáp án câu v5 (y = 16)
+    if (q.id === "v5") {
+      return { 
+        ...q, 
+        correctAnswers: ["C"],
+        explanation: "++x (tiền tố) làm x=4 rồi dùng 4; x++ (hậu tố) dùng 4 rồi tăng x thành 5. y = 4 * 4 = 16, x kết thúc = 5. Tránh viết biểu thức gây nhầm lẫn."
+      };
+    }
+    return q;
+  })}
+/>
