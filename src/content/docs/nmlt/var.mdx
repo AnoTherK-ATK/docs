@@ -9,7 +9,7 @@ tableOfContents:
 ---
 
 import { Card, Code, TabItem, Tabs } from "@astrojs/starlight/components";
-import Quiz from "../../../components/Quiz.astro";
+import Quiz from "@components/Quiz.astro";
 
 Ủa sao nãy học có mỗi xuất mà không có nhập ta?
 
@@ -75,8 +75,8 @@ Với các kiểu dữ liệu này thì C++ còn chia nhỏ ra nữa để bạn
 |`int`|$-2^{31} ... 2^{31} - 1$|4 bytes|$2^{31} = 2147483648$|
 |`short`|$-2^{15} ... 2^{15} - 1$|2 bytes|$2^{15} = 32768$|
 |`unsigned int`|$0 ... 2^{32} - 1$|4 bytes||
-|`long long`|$-2^{63} ... 2^{63} - 1$|8 bytes|nó dài quá nên chắc thôi|
-|`unsigned long long`|0 ... 2^{64} - 1$|8 bytes|
+|`long long`|$-2^{63} ... 2^{63} - 1$|8 bytes|$2^{63} \approx 9 \times 10^{18}$|
+|`unsigned long long`|$0 ... 2^{64} - 1$|8 bytes|
 
 Nó có hai điều mà bạn bắt buộc phải nhớ:
 :::note[Số có dấu vs Số không dấu]
@@ -196,6 +196,43 @@ Bạn có thể khai báo biến bên ngoài các hàm (nó sẽ thành biến t
     </TabItem>
 </Tabs>
 
+### Nhập 
+Bây giờ mới đến nhập này.
+
+<Tabs>
+    <TabItem label="C++" icon='seti:cpp'>
+        ```c++ showLineNumbers=false
+        cin >> <biến>;
+        ```
+    </TabItem>
+    <TabItem label="Python" icon='seti:python'>
+        ```python showLineNumbers=false
+        <biến> = input()
+        ```
+        Khi nhập xong thì nó luôn là dạng chuỗi ký tự nên bân cần ép kiểu.
+    </TabItem>
+</Tabs>
+
+### Xuất 
+<Tabs>
+    <TabItem label="C++" icon='seti:cpp'>
+        ```c++ showLineNumbers=false
+        cout << <biến>;
+        ```
+    </TabItem>
+    <TabItem label="Python" icon='seti:python'>
+        ```python showLineNumbers=false
+        print(<biến>)
+        ```
+    </TabItem>
+</Tabs>
+
+Khi mà in số thực ở C++ thì bạn nên thêm các này để nó in ok nhất:
+
+```c++ showLineNumbers=false
+cout << fixed << setprecision(<số chữ số sau dấu thập phân>) << x;
+```
+
 ### Tính toán
 Cái này thì nhiều luôn. Bạn có thể dùng các toán tử như `+, -, *, /,...`.
 
@@ -282,9 +319,7 @@ double x = 10 / 4;
 
 Biến x sẽ có giá trị bao nhiêu?
 
-Bằng 2.5 hay là 2.49999999 á? Sai.
-
-Đây là thứ làm nên thương hiệu của C++.
+Bằng 2.5 hay là 2.49999999 á? Sai. Nó là 2.
 
 Khi phép tính của bạn bắt đầu với kiểu dữ liệu nào, thì nó sẽ tự động hiểu các kiểu dữ liệu sau đó sẽ là cùng loại.
 
@@ -299,6 +334,14 @@ double x = (double)10 / 4;
 ```
 
 Chỉ cần bạn mở một cái ngoặc ở đằng trước và ghi kiểu bạn muốn là xong.
+
+Còn với Python thì sẽ là:
+
+```python
+x = int(2.5)
+```
+
+là ngược lại, ghi tên kiểu trước rồi đóng cái đống phép tính vào ngoặc.
 
 ## Hằng số 
 Ở trong lập trình, bạn có thể có được các hằng số.
@@ -316,7 +359,10 @@ const <tên hằng số> = <giá trị ban đầu>;
 Lần này bạn bắt buộc phải có giá trị ban đầu. Và khai báo hằng số phải nằm bên ngoài tất cả các hàm.
 
 ## Luyện tập
-Tôi nghĩ là bài thì cũng chỉ xoay quanh các gán biến cơ bản thôi. Không có gì nhiều
+- [A cộng B](https://oj.vnoi.info/problem/post).
+- [Chăn bò](https://oj.vnoi.info/problem/olp_kc20_cows). Bài này vận dụng tí nhẹ.
+- [Tính toán sát thương](https://lhpoj.io.vn/problem/derank13_dmgcalc). Bạn đọc truyện cho vui.
+- Bạn tự luyện tập thêm.
 
 ## Bài tập
 

@@ -4,7 +4,7 @@
 
 ```astro
 ---
-import Quiz from '../../components/Quiz.astro';
+import Quiz from '@components/Quiz.astro';
 ---
 
 <Quiz 

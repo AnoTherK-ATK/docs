@@ -31,7 +31,12 @@ export default defineConfig({
 					autogenerate: { directory: 'dsa' },
 				},
 			],
-			customCss: ['./src/mathjax.css'],
+			customCss: [
+				'./src/styles/mathjax.css',
+				'@fontsource/jetbrains-mono/vietnamese-500.css',
+				'@fontsource/roboto/vietnamese-500.css',
+				'./src/styles/font.css',
+			],
 		}),
 		mermaid({
 			theme: 'dark',
