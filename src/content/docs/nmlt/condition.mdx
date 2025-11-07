@@ -2,9 +2,64 @@
 title: Câu lệnh điều kiện/rẽ nhánh
 description: NẾU
 sidebar:
-    order: 6
+    order: 7
 tableOfContents:
     minHeadingLevel: 1
     maxHeadingLevel: 2
 ---
+
+import { Card, Code, Tabs, TabItem } from "@astrojs/starlight/components";
+import Quiz from "@components/Quiz.astro";
+
+Giờ tưởng tượng bạn code giống như đi trên đường. Bạn gặp một cái ngã ba bắt buộc bạn phải quẹo trái hay phải thì bạn phải chọn như thế nào?
+
+Phải có điều kiện để chọn, lý do để chọn đúng không? Thì code cũng như thế, bạn không thể nào chỉ có "đi thẳng" hoài được, kiểu gì bạn cũng sẽ phải kiểm tra gì đó rồi ra quyết định.
+
+Thì chúng ta cùng đến với nội dung tiếp theo.
+
+## Định nghĩa
+Hay còn gọi là lệnh điều kiện, nó làm một công việc khá đơn giản.
+
+<Card title="Câu lệnh rẽ nhánh" icon="random" >
+    Hoạt động bằng cách kiểm tra một điều kiện / giá trị của biến để quyết định đoạn lệnh nào sẽ được thực hiện.
+</Card>
+
+Cái ý tưởng này giúp cho chúng ta có thể xử lý vài câu chuyện dễ hơn rất nhiều.
+
+Chúng ta sẽ có 2 loại lệnh khác nhau cho cấu trúc này.
+- If
+- Switch case
+
+## If
+---
+Bạn có học qua "câu điều kiện" trong tiếng Anh chưa? Nó y chang cái này luôn.
+
+Quy tắc chúng ta cần nhớ khi làm cái này là:
+
+<Card title="Nếu .... thì" icon="warning">
+    Nếu như điều kiện đúng thì ta làm cái này.
+
+    Không đúng thì làm cái kia.
+</Card>
+
+### Cú pháp
+
+<Tabs>
+    <TabItem label="C++" icon="seti:cpp">
+        ```c++
+        if (<điều kiện>)
+            <câu lệnh này>
+        else
+            <câu lệnh kia>
+        ```
+    </TabItem>
+</Tabs>
+
+Vậy thì điều kiện ở đây là gì được ta?
+
+Nó là nhiều thứ lắm.
+
+Cơ bản nhất là so sánh giá trị của 2 biến theo kiểu cái nào lớn hơn hay bằng nhau các thể loại.
+
+
 

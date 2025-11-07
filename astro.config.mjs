@@ -5,6 +5,7 @@ import remarkMath from 'remark-math';
 import rehypeMathJax from 'rehype-mathjax';
 import mermaid from 'astro-mermaid';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
+import starlightThemeGalaxy from 'starlight-theme-galaxy';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +15,7 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			plugins: [starlightAutoSidebar()],
+			plugins: [starlightAutoSidebar(), starlightThemeGalaxy()],
 			title: "AnoTherK's basement",
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AnoTherK-ATK/docs' }, { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/anotherk.da' }],
 			sidebar: [
