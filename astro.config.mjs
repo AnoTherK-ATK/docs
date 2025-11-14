@@ -37,6 +37,7 @@ export default defineConfig({
 				'@fontsource/jetbrains-mono/vietnamese-500.css',
 				'@fontsource/roboto/vietnamese-500.css',
 				'./src/styles/font.css',
+				'./src/styles/custom.css',
 			],
 		}),
 		mermaid({

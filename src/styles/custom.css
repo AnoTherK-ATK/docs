@@ -1,0 +1,12 @@
+/* Make card title bigger */
+.card .title {
+    font-size: 1.75em !important;
+}
+
+/* Make card icon bigger */
+.card .icon {
+    width: 1em !important;
+    height: 1em !important;
+    --sl-icon-size: 1.2em !important;
+}
+

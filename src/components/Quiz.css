@@ -3,7 +3,7 @@
     --qz-bg: var(--sl-color-bg, #ffffff);
     --qz-text: var(--sl-color-text, #111827);
     --qz-muted: var(--sl-color-text-muted, #6b7280);
-    --qz-hairline: var(--sl-color-hairline, #e5e7eb);
+    --qz-hairline: #6b7280;
     --qz-accent: var(--sl-color-accent, #4f46e5);
     --qz-accent-low: var(--sl-color-accent-low, #eef2ff);
     --qz-green: var(--sl-color-green, #10b981);
