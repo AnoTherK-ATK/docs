@@ -1,0 +1,25 @@
+/* Overrides to ensure custom fonts apply across the site */
+:root {
+    /* Preferred UI (prose) font */
+    --sl-font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    /* Monospace / code font */
+    --sl-mono-font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+}
+
+/* Ensure the site body uses our chosen variable (high specificity to override theme) */
+html, body {
+    font-family: var(--sl-font-family) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make sure code blocks and inline code use the mono font */
+code, pre, .expressive-code code, .st-code, .remark-code {
+    font-family: var(--sl-mono-font-family) !important;
+}
+
+/* Optional: smaller fallback for very small places */
+.mono, .code {
+    font-family: var(--sl-mono-font-family) !important;
+}

@@ -34,9 +34,13 @@ export default defineConfig({
 			],
 			customCss: [
 				'./src/styles/mathjax.css',
-				'@fontsource/jetbrains-mono/vietnamese-500.css',
-				'@fontsource/roboto/vietnamese-500.css',
+				// load common weights so the theme can use 400/500/700 reliably
+				'@fontsource/jetbrains-mono/400.css',
+				'@fontsource/jetbrains-mono/700.css',
+				'@fontsource/roboto/400.css',
+				'@fontsource/roboto/700.css',
 				'./src/styles/font.css',
+				'./src/styles/font-override.css',
 				'./src/styles/custom.css',
 			],
 		}),
