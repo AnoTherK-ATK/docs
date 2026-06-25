@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-# Quyền tối thiểu để deploy Pages
+
 permissions:
   contents: read
   pages: write
@@ -13,10 +13,10 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true 
 
 env:
-  BUILD_PATH: "."        # Đổi sang subfolder nếu cần, ví dụ: docs
+  BUILD_PATH: "."       
 
 jobs:
   build:
@@ -26,11 +26,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Cài pnpm (ổn định & nhanh). Bạn có thể pin version bạn đang dùng trong repo.
+      # Cài pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.33.2   # hoặc version bạn muốn cố định
+          version: 10.33.2   
 
       # Node + cache pnpm theo pnpm-lock.yaml
       - name: Setup Node
@@ -48,6 +48,15 @@ jobs:
       - name: Install dependencies
         working-directory: ${{ env.BUILD_PATH }}
         run: pnpm install --frozen-lockfile
+
+      # TỐI ƯU 2: Thêm Cache riêng cho quá trình build của Astro
+      - name: Cache Astro build
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.BUILD_PATH }}/node_modules/.astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('**/src/**/*', '**/astro.config.*') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
 
       - name: Build with Astro
         working-directory: ${{ env.BUILD_PATH }}
